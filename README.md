@@ -88,4 +88,33 @@ FileShare-Pro-Java/
 git clone https://github.com/Urvashi-3159/FileShare-Pro-Java.git
 ```
 
-### Step
+### Step 2: Open Project Directory
+
+```bash
+cd FileShare-Pro-Java
+
+### Step 3: Compile Java Files
+
+```bash
+javac -d out src/main/java/com/fileshare/*.java
+
+### Step 4: Start the Server
+
+```bash
+java -cp out com.fileshare.FileServer
+
+### Step 5: Start the Client GUI
+
+Open a new terminal while keeping the server terminal running.
+
+```bash
+java -cp out com.fileshare.ClientGUI
+
+### Step 6: Use the Application
+
+1. Register a new account using your username and password.
+2. Log in with your registered credentials.
+3. Select a file and click **Upload** to upload it.
+4. View your uploaded files in the file list.
+5. Select a file and click **Download** to download it.
+6. Select a file and click **Delete** to remove it from your account.
