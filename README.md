@@ -1,55 +1,91 @@
-# FileShare Pro — Java Computer Networking (Final Academic Build)
+# 🚀 FileShare Pro – Java-Based File Sharing Application
 
-Java Swing desktop application using TCP sockets and a multithreaded server.
+A client-server file-sharing application developed using Java Socket Programming and Swing GUI. It allows users to register, log in, upload, download, view, and delete files through a graphical interface.
 
-## Implemented
-- Register and login with per-user file storage
-- Password hashing with PBKDF2-HMAC-SHA256 and random salts
-- TCP client/server architecture
-- Upload, list, download and delete files
-- Separate storage folder for each account
-- Multiple simultaneous client connections
-- Upload/download progress bars
-- File size display, input validation and basic transfer error handling
-- No external libraries required
+## 📌 Project Overview
 
-## Run on Windows (JDK 17+; Java 21 recommended)
-Open terminal in the project root:
+FileShare Pro is a networking-based application that demonstrates TCP client-server communication, user authentication, file handling, and multithreading.
 
-```bat
-mkdir out
-javac -d out src\main\java\com\fileshare\*.java
+The application provides a simple graphical interface through which users can securely manage their files within their own accounts.
+
+## ✨ Features
+
+- **User Registration:** Create a new account.
+- **User Authentication:** Login using username and password.
+- **File Upload:** Upload files from your local system.
+- **File Download:** Download stored files.
+- **File Listing:** View uploaded files with their sizes.
+- **File Deletion:** Delete selected files.
+- **Progress Tracking:** Monitor file transfer progress.
+- **User-Specific Storage:** Maintain separate storage directories for users.
+- **Multithreading:** Handle multiple client connections.
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| Java | Core programming language |
+| TCP Socket Programming | Client-server communication |
+| Java Swing | Graphical User Interface |
+| Java I/O Streams | File transfer and data handling |
+| Multithreading | Multiple client handling |
+| PBKDF2 | Password hashing |
+
+## 🏗️ Project Architecture
+
+```text
+             CLIENT
+               |
+               |
+          ClientGUI.java
+               |
+               |
+          FileClient.java
+               |
+               |
+        TCP Socket Connection
+               |
+               |
+          FileServer.java
+               |
+        -----------------
+        |               |
+   Authentication   File Handling
+        |               |
+     users.db       server_files/
 ```
 
-Terminal 1:
-```bat
-java -cp out com.fileshare.FileServer
+## 📂 Project Structure
+
+```text
+FileShare-Pro-Java/
+│
+├── src/
+│   └── main/
+│       └── java/
+│           └── com/
+│               └── fileshare/
+│                   ├── ClientGUI.java
+│                   ├── FileClient.java
+│                   ├── FileServer.java
+│                   └── PasswordUtil.java
+│
+├── .gitignore
+└── README.md
 ```
 
-Terminal 2:
-```bat
-java -cp out com.fileshare.ClientGUI
+## ⚙️ How to Run
+
+### Prerequisites
+
+- Java JDK 21 or later
+- VS Code or any Java IDE
+- Git
+
+### Step 1: Clone Repository
+
+```bash
+git clone https://github.com/Urvashi-3159/FileShare-Pro-Java.git
 ```
 
-In the GUI, choose the same server IP and port `5000`. Register a username (3-24 letters/digits/_/-) and password (at least 8 characters), or log in.
-
-## Storage
-- `users.db` stores usernames, random salts and password hashes (not plaintext passwords).
-- `server_files/<username>/` stores each user's files.
-
-Back up both `users.db` and `server_files` if preserving accounts and files.
-
-## Test checklist
-1. Start server and GUI.
-2. Register a new user.
-3. Upload a small file; observe progress.
-4. Refresh and confirm file name and size.
-5. Select it and download to another folder.
-6. Delete the server copy and refresh.
-7. Start a second client window and register another user; verify the first user's files are not listed.
-
-## Computer networking concepts for demonstration
-TCP connection-oriented communication, IP address, port number, client-server model, `Socket`, `ServerSocket`, byte streams, `DataInputStream`, `DataOutputStream`, multithreading, concurrent client handling and transfer timeouts.
-
-## Important security note
-This is a college/LAN demonstration, not production-ready. Passwords are hashed, but network traffic is NOT encrypted with TLS, and this simple protocol does not yet provide hardened session tokens/rate limiting. Use only on a trusted private network; never expose port 5000 publicly or transfer confidential files.
+### Step
