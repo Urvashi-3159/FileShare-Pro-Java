@@ -44,7 +44,7 @@ public class ClientGUI extends JFrame {
     }
     private void refreshFiles(){
         if(!loggedIn){status.setText("Please log in first.");return;}
-        work("Refreshing files...",()->{var arr=client().list();SwingUtilities.invokeLater(()->{model.clear();for(var f:arr)model.addElement(f);status.setText(arr.length+" file(s) in your account.");});});
+        work("Refreshing files...",()->{var arr=client().list(user(), pass());SwingUtilities.invokeLater(()->{model.clear();for(var f:arr)model.addElement(f);status.setText(arr.length+" file(s) in your account.");});});
     }
     private void upload(){
         if(!loggedIn)return;JFileChooser c=new JFileChooser();if(c.showOpenDialog(this)!=JFileChooser.APPROVE_OPTION)return;Path p=c.getSelectedFile().toPath();
